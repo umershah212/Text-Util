@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const Textform = (props) => {
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
 
   const onHandleEvent = (event) => {
     setText(event.target.value);
   };
   const onBtnClick = () => {
-    const temp = text.value;
-    setText(temp);
-    console.log("Upper case clicked");
+    let newText = text;
+    setText(newText.toUpperCase());
   };
 
   return (
