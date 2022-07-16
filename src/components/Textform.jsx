@@ -7,29 +7,45 @@ const Textform = (props) => {
   const onHandleEvent = (event) => {
     setText(event.target.value);
   };
-  const onBtnClick = () => {
+  const onBtnUpClick = () => {
     let newText = text;
     setText(newText.toUpperCase());
+  };
+  const onBtnLoClick = () => {
+    let newText = text;
+    setText(newText.toLowerCase());
   };
 
   return (
     <>
-      <div className="mb-3">
-        <label htmlFor="myBox" className="form-label">
-          {props.text}
-        </label>
+      <div className="container">
+        <div className="mb-3">
+          <h1>{props.text}</h1>
+        </div>
+        <textarea
+          className="form-control my-2"
+          id="myBox"
+          rows="3"
+          placeholder="Enter the text here"
+          value={text}
+          onChange={onHandleEvent}
+        ></textarea>
+        <button className="btn btn-primary mx-2" onClick={onBtnUpClick}>
+          Convert to Uppercase
+        </button>
+        <button className="btn btn-primary mx-2" onClick={onBtnLoClick}>
+          Convert to Lowercase
+        </button>
       </div>
-      <textarea
-        className="form-control"
-        id="myBox"
-        rows="3"
-        placeholder="Enter the text here"
-        value={text}
-        onChange={onHandleEvent}
-      ></textarea>
-      <button className="btn btn-primary" onClick={onBtnClick}>
-        Convert to Uppercase
-      </button>
+      <div className="container my-2">
+        <h3>Your Text Summary</h3>
+        <p>Words {text.split(" ").length}</p>
+        <p>Characters {text.length}</p>
+      </div>
+      <div className="container">
+        <h2>Preview</h2>
+        <p>{text}</p>
+          </div>
     </>
   );
 };
