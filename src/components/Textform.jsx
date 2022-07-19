@@ -28,7 +28,7 @@ const Textform = (props) => {
     <>
       <div className="container">
         <div className="mb-3">
-          <h1>{props.text}</h1>
+          <h1>Enter the text below:</h1>
         </div>
         <textarea
           className="form-control my-2"
