@@ -15,6 +15,14 @@ const Textform = (props) => {
     let newText = text;
     setText(newText.toLowerCase());
   };
+  const onBtnFlClick = () => {
+    let newText = text;
+    newText = newText
+      .split("")
+      .filter((curr) => !isNaN(curr))
+      .join("");
+    setText(newText);
+  };
 
   return (
     <>
@@ -36,6 +44,9 @@ const Textform = (props) => {
         <button className="btn btn-primary mx-2" onClick={onBtnLoClick}>
           Convert to Lowercase
         </button>
+        <button className="btn btn-primary mx-2" onClick={onBtnFlClick}>
+          Filter Numbers
+        </button>
       </div>
       <div className="container my-2">
         <h3>Your Text Summary</h3>
@@ -45,7 +56,7 @@ const Textform = (props) => {
       <div className="container">
         <h2>Preview</h2>
         <p>{text}</p>
-          </div>
+      </div>
     </>
   );
 };
