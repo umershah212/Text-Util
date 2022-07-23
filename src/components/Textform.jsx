@@ -50,7 +50,7 @@ const Textform = (props) => {
       </div>
       <div className="container my-2">
         <h3>Your Text Summary</h3>
-        <p>Words {text.split(" ").length}</p>
+        <p>Words {text.split(" ").reduce((prev,curr,i,arr)=>curr===""?prev:prev=prev+1,0)}</p>
         <p>Characters {text.length}</p>
       </div>
       <div className="container">
