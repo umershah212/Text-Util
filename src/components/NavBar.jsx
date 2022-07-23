@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 const NavBar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           {props.title}
@@ -32,17 +34,21 @@ const NavBar = (props) => {
               </a>
             </li>
           </ul>
-          <form className="d-flex" role="search">
+          <div className="form-check form-switch">
             <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              onClick={props.modeCheck}
             />
-            <button className="btn btn-primary" type="submit">
-              Search
-            </button>
-          </form>
+            <label
+              className={`form-check-label text-${props.mode==='light'?'dark':'light'}`}
+              htmlFor="flexSwitchCheckDefault"
+            >
+              {`${props.mode} mode`}
+            </label>
+          </div>
         </div>
       </div>
     </nav>
@@ -57,6 +63,8 @@ NavBar.propTypes = {
 NavBar.defaultProps = {
   title: PropTypes.string,
   aboutText: PropTypes.string,
+  mode: PropTypes.string,
+  modeCheck: PropTypes.any
 };
 
 export default NavBar;

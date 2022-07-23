@@ -132,9 +132,9 @@ const About = (props) => {
             </div>
           </div>
         </div>
-        <button className="btn btn-primary m-5" onClick={modeChange}>
+        {/* <button className="btn btn-primary m-5" onClick={modeChange}>
           {btnText}
-        </button>
+        </button> */}
       </div>
     </>
   );

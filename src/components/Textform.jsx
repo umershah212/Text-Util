@@ -10,10 +10,12 @@ const Textform = (props) => {
   const onBtnUpClick = () => {
     let newText = text;
     setText(newText.toUpperCase());
+    props.notify("Text converted to Upper case", "Success");
   };
   const onBtnLoClick = () => {
     let newText = text;
     setText(newText.toLowerCase());
+    props.notify("Text converted to Lower case", "Success");
   };
   const onBtnFlClick = () => {
     let newText = text;
@@ -22,11 +24,15 @@ const Textform = (props) => {
       .filter((curr) => !isNaN(curr))
       .join("");
     setText(newText);
+    props.notify("All numbers are filtered", "Success");
   };
 
   return (
     <>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "dark" ? "#d9d9d9" : "#1f1f1f" }}
+      >
         <div className="mb-3">
           <h1>Enter the text below:</h1>
         </div>
@@ -37,6 +43,10 @@ const Textform = (props) => {
           placeholder="Enter the text here"
           value={text}
           onChange={onHandleEvent}
+          style={{
+            color: props.mode === "dark" ? "#d9d9d9" : "#1f1f1f",
+            backgroundColor: props.mode === "dark" ? "#1f1f1f" : "white",
+          }}
         ></textarea>
         <button className="btn btn-primary mx-2" onClick={onBtnUpClick}>
           Convert to Uppercase
@@ -48,12 +58,26 @@ const Textform = (props) => {
           Filter Numbers
         </button>
       </div>
-      <div className="container my-2">
+      <div
+        className="container my-2"
+        style={{ color: props.mode === "dark" ? "#d9d9d9" : "#1f1f1f" }}
+      >
         <h3>Your Text Summary</h3>
-        <p>Words {text.split(" ").reduce((prev,curr,i,arr)=>curr===""?prev:prev=prev+1,0)}</p>
+        <p>
+          Words{" "}
+          {text
+            .split(" ")
+            .reduce(
+              (prev, curr, i, arr) => (curr === "" ? prev : (prev = prev + 1)),
+              0
+            )}
+        </p>
         <p>Characters {text.length}</p>
       </div>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "dark" ? "#d9d9d9" : "#1f1f1f" }}
+      >
         <h2>Preview</h2>
         <p>{text}</p>
       </div>
