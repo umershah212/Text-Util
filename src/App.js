@@ -18,10 +18,10 @@ function App() {
       setAlertmsg(null);
     }, 1500);
   };
-  const UpdateMode = () => {
+  const UpdateMode = (darkColor) => {
     if (mode === "light") {
       setMode("dark");
-      document.body.style.backgroundColor = "#1f1f1f";
+      document.body.style.backgroundColor = darkColor;
       showAlert("Dark Mode enables", "Success");
     } else {
       setMode("light");

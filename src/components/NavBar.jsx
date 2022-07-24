@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const NavBar = (props) => {
+  const [col, setCol] = useState("black");
+
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
@@ -34,16 +36,30 @@ const NavBar = (props) => {
               </a>
             </li>
           </ul>
+          <div className="container">
+            <input
+              type="color"
+              id="favcolor"
+              name="favcolor"
+              onChange={() => {
+                setCol(document.getElementById("favcolor").value);
+              }}
+            />
+          </div>
           <div className="form-check form-switch">
             <input
               className="form-check-input"
               type="checkbox"
               role="switch"
               id="flexSwitchCheckDefault"
-              onClick={props.modeCheck}
+              onClick={() => {
+                props.modeCheck(col);
+              }}
             />
             <label
-              className={`form-check-label text-${props.mode==='light'?'dark':'light'}`}
+              className={`form-check-label text-${
+                props.mode === "light" ? "dark" : "light"
+              }`}
               htmlFor="flexSwitchCheckDefault"
             >
               {`${props.mode} mode`}
@@ -64,7 +80,7 @@ NavBar.defaultProps = {
   title: PropTypes.string,
   aboutText: PropTypes.string,
   mode: PropTypes.string,
-  modeCheck: PropTypes.any
+  modeCheck: PropTypes.any,
 };
 
 export default NavBar;
