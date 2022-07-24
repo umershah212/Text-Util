@@ -10,7 +10,7 @@ const About = (props) => {
   return (
     <>
       <div className="container p-4" style={{ color: myStyle.color }}>
-        <h1 className="my-5">About Page</h1>
+        <h1 className="mb-3">About Page</h1>
         <div className="accordion" id="accordionExample" style={myStyle}>
           <div className="accordion-item" style={myStyle}>
             <h2 className="accordion-header" id="headingOne">

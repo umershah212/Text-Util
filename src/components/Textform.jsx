@@ -135,7 +135,7 @@ const Textform = (props) => {
         <p>
           Words{" "}
           {text
-            .split(" ")
+            .split(/\s+/)
             .reduce(
               (prev, curr, i, arr) => (curr === "" ? prev : (prev = prev + 1)),
               0
@@ -148,7 +148,7 @@ const Textform = (props) => {
         style={{ color: props.mode === "dark" ? "#d9d9d9" : "#1f1f1f" }}
       >
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text===""?"Nothing to Preview":text}</p>
       </div>
     </>
   );
