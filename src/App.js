@@ -4,6 +4,7 @@ import Textform from "./components/Textform";
 import About from "./components/About";
 import { useState } from "react";
 import Alert from "./components/Alert";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
   document.title = "Text Utils";
@@ -30,7 +31,7 @@ function App() {
     }
   };
   return (
-    <>
+    <Router>
       <NavBar
         title="Text Utility"
         aboutText="About TextUtil"
@@ -39,10 +40,22 @@ function App() {
       />
       <Alert notify={alertmsg} />
       <div className="container my-3">
-        <Textform text="Enter Text Below" mode={mode} notify={showAlert} />
-        <About mode={mode} />
+        <Routes>
+          <Route exact path="/about" element={<About mode={mode} />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <Textform
+                text="Enter Text Below"
+                mode={mode}
+                notify={showAlert}
+              />
+            }
+          />
+        </Routes>
       </div>
-    </>
+    </Router>
   );
 }
 
