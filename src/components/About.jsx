@@ -1,35 +1,15 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 const About = (props) => {
-  const [myStyle, setMyStyle] = useState({
-    color: "#1f1f1f",
-    backgroundColor: "#d9d9d9",
+  let myStyle = {
+    color: props.mode === "dark" ? "#d9d9d9" : "#1f1f1f",
+    backgroundColor: props.mode === "dark" ? "#1f1f1f" : "#d9d9d9",
     width: "100%",
-  });
-
-  const [btnText, setBtnText] = useState("Enable Dark Mode");
-
-  const modeChange = () => {
-    if (myStyle.color === "#1f1f1f") {
-      setMyStyle({
-        color: "#d9d9d9",
-        backgroundColor: "#1f1f1f",
-        width: "100%",
-      });
-      setBtnText("Enable Light Mode");
-    } else {
-      setMyStyle({
-        color: "#1f1f1f",
-        backgroundColor: "#d9d9d9",
-        width: "100%",
-      });
-      setBtnText("Enable Dark Mode");
-    }
   };
+
   return (
     <>
-      <div className="container rounded-lg border" style={myStyle}>
+      <div className="container p-4" style={{ color: myStyle.color }}>
         <h1 className="my-5">About Page</h1>
         <div className="accordion" id="accordionExample" style={myStyle}>
           <div className="accordion-item" style={myStyle}>
@@ -132,9 +112,6 @@ const About = (props) => {
             </div>
           </div>
         </div>
-        {/* <button className="btn btn-primary m-5" onClick={modeChange}>
-          {btnText}
-        </button> */}
       </div>
     </>
   );

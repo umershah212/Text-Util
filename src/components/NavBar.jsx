@@ -37,16 +37,17 @@ const NavBar = (props) => {
               </Link>
             </li>
           </ul>
-          <div className="container">
-            <input
-              type="color"
-              id="favcolor"
-              name="favcolor"
-              onChange={() => {
-                setCol(document.getElementById("favcolor").value);
-              }}
-            />
-          </div>
+
+          <input
+          className="mx-4"
+            type="color"
+            id="favcolor"
+            name="favcolor"
+            onChange={() => {
+              setCol(document.getElementById("favcolor").value);
+            }}
+          />
+
           <div className="form-check form-switch">
             <input
               className="form-check-input"

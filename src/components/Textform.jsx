@@ -17,14 +17,47 @@ const Textform = (props) => {
     setText(newText.toLowerCase());
     props.notify("Text converted to Lower case", "Success");
   };
+  const clearText = () => {
+    setText("");
+    props.notify("Text Cleared", "Success");
+  };
   const onBtnFlClick = () => {
+    let newText = text;
+    newText = newText
+      .split("")
+      .filter((curr) => isNaN(curr))
+      .join("");
+    setText(newText);
+    props.notify("All numbers are removed", "Success");
+  };
+  const filterChar = () => {
     let newText = text;
     newText = newText
       .split("")
       .filter((curr) => !isNaN(curr))
       .join("");
     setText(newText);
-    props.notify("All numbers are filtered", "Success");
+    props.notify("All characters are removed!", "Success");
+  };
+  const removeSpaces = () => {
+    let newText = text;
+    newText = newText
+      .split("")
+      .filter((curr) => curr !== " ")
+      .join("");
+    setText(newText);
+    props.notify("All spaces are removed!", "Success");
+  };
+  const generateString = () => {
+    var result = "";
+    var characters =
+      "ABCDEF GHIJKLM NOPQRSTUVWXY Zabcde fghijkl mnopqrstuvw xyz0123456789 ";
+    var charactersLength = characters.length;
+    for (var i = 0; i < 100; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    setText(text+result);
+    props.notify("Random string is generated", "Success");
   };
 
   return (
@@ -48,14 +81,50 @@ const Textform = (props) => {
             backgroundColor: props.mode === "dark" ? "#1f1f1f" : "white",
           }}
         ></textarea>
-        <button className="btn btn-primary mx-2" onClick={onBtnUpClick}>
+        <button className="btn btn-primary m-2" onClick={generateString}>
+          Generate Random String
+        </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary m-2"
+          onClick={onBtnUpClick}
+        >
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={onBtnLoClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary m-2"
+          onClick={onBtnLoClick}
+        >
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={onBtnFlClick}>
-          Filter Numbers
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary m-2"
+          onClick={onBtnFlClick}
+        >
+          Remove Numbers
+        </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary m-2"
+          onClick={filterChar}
+        >
+          Remove Characters
+        </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary m-2"
+          onClick={removeSpaces}
+        >
+          Remove Spaces
+        </button>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary m-2"
+          onClick={clearText}
+        >
+          Clear Text
         </button>
       </div>
       <div
